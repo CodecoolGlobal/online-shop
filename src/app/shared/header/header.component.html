@@ -1,3 +1,9 @@
 <mat-toolbar color="primary">
-  <span>{{pageTitle}}</span>
+  <button id="logo-button" mat-fab aria-label="Example icon button with a bookmark icon">
+    <mat-icon svgIcon="logo"></mat-icon>
+  </button>
+  <span class="example-icon"></span>
+  {{pageTitle}}
+  <span class="example-spacer"></span>
+  <mat-icon>settings</mat-icon>
 </mat-toolbar>

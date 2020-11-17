@@ -9,6 +9,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { MaterialModule } from './material.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SettingsComponent } from './settings/settings.component';
+import {HttpClientModule} from '@angular/common/http';
+import {MatIcon, MatIconModule} from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -19,6 +21,8 @@ import { SettingsComponent } from './settings/settings.component';
     SettingsComponent
   ],
   imports: [
+    HttpClientModule,
+    MatIconModule,
     BrowserModule,
     AppRoutingModule,
     MaterialModule,
