@@ -3,7 +3,22 @@
     <mat-icon svgIcon="logo"></mat-icon>
   </button>
   <span class="example-icon"></span>
+  <mat-icon>{{iconTitle}}</mat-icon>
+  <span class="example-icon"></span>
   {{pageTitle}}
   <span class="example-spacer"></span>
+  <mat-icon [matMenuTriggerFor]="helpMenu">live_help</mat-icon>
+  <span class="example-icon"></span>
   <mat-icon>settings</mat-icon>
+
+  <mat-menu #helpMenu="matMenu">
+    <div *ngIf="helpTitle=='Setting Help Page'">
+      This is the settings help.
+    </div>
+    <div *ngIf="helpTitle=='About Help Page'">
+      This is the about help.
+    </div>
+    {{helpTitle}}
+  </mat-menu>
+
 </mat-toolbar>

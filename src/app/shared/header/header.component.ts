@@ -9,6 +9,7 @@ export class HeaderComponent implements OnInit {
 
   @Input() pageTitle: string;
   @Input() iconTitle: string;
+  @Input() helpTitle: string;
 
   constructor() { }
 
