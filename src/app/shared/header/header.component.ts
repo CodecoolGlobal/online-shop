@@ -7,6 +7,7 @@ import {Component, Input, OnInit} from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
+  showFiller = false;
   @Input() pageTitle: string;
   @Input() iconTitle: string;
   @Input() helpTitle: string;

@@ -29,6 +29,7 @@ import {MatBadgeModule} from '@angular/material/badge';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatNativeDateModule} from '@angular/material/core';
 import {DomSanitizer} from '@angular/platform-browser';
+import {MatSidenavModule} from '@angular/material/sidenav';
 
 
 @NgModule({
@@ -64,7 +65,8 @@ import {DomSanitizer} from '@angular/platform-browser';
     MatBadgeModule,
     MatExpansionModule,
     MatRadioModule,
-    MatBadgeModule
+    MatBadgeModule,
+    MatSidenavModule
   ],
   exports: [
     BrowserAnimationsModule,
@@ -94,13 +96,17 @@ import {DomSanitizer} from '@angular/platform-browser';
     MatBadgeModule,
     MatExpansionModule,
     MatRadioModule,
-    MatBadgeModule
+    MatBadgeModule,
+    MatSidenavModule
   ]
 })
 export class MaterialModule {
-  constructor(iconRegistry: MatIconRegistry, sanitizer: DomSanitizer) {
-    iconRegistry.addSvgIcon(
-      'more_vert',
-      sanitizer.bypassSecurityTrustResourceUrl('assets/icons/more_vert.svg'));
+  constructor(
+    private matIconRegistry: MatIconRegistry,
+    private domSanitizer: DomSanitizer){
+    this.matIconRegistry.addSvgIcon(
+      `logo`,
+      this.domSanitizer.bypassSecurityTrustResourceUrl('../assets/logo.svg')
+    );
   }
 }
