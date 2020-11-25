@@ -31,7 +31,6 @@ import {MatNativeDateModule} from '@angular/material/core';
 import {DomSanitizer} from '@angular/platform-browser';
 import {MatSidenavModule} from '@angular/material/sidenav';
 
-
 @NgModule({
   declarations: [],
   imports: [
@@ -66,7 +65,7 @@ import {MatSidenavModule} from '@angular/material/sidenav';
     MatExpansionModule,
     MatRadioModule,
     MatBadgeModule,
-    MatSidenavModule
+    MatSidenavModule,
   ],
   exports: [
     BrowserAnimationsModule,
@@ -106,7 +105,15 @@ export class MaterialModule {
     private domSanitizer: DomSanitizer){
     this.matIconRegistry.addSvgIcon(
       `logo`,
-      this.domSanitizer.bypassSecurityTrustResourceUrl('../assets/logo.svg')
+      this.domSanitizer.bypassSecurityTrustResourceUrl('../assets/svgs/logo.svg')
+    );
+    this.matIconRegistry.addSvgIcon(
+      `linkedin`,
+      this.domSanitizer.bypassSecurityTrustResourceUrl('../assets/svgs/linkedin.svg')
+    );
+    this.matIconRegistry.addSvgIcon(
+      `order`,
+      this.domSanitizer.bypassSecurityTrustResourceUrl('../assets/svgs/order.svg')
     );
   }
 }

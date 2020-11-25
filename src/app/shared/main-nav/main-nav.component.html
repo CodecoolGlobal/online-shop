@@ -1,36 +1,92 @@
-<mat-sidenav-container class="sidenav-container" >
-  <mat-sidenav #drawer class="sidenav" fixedInViewport="false"
-               [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
-               [mode]="(isHandset$ | async) ? 'over' : 'side'"
-               opened>
-    <mat-toolbar class="sidenav-toolbar">
-      WELCOME!
-    </mat-toolbar>
-    <mat-nav-list>
-      <a mat-list-item href="#">ABOUT US</a>
-      <a mat-list-item href="#">LOGGING</a>
-      <a mat-list-item href="#">HOW TO BUY</a>
-      <a mat-list-item href="#">HOW TO BUY</a>
-      <a mat-list-item href="#">HOW TO BUY</a>
-      <a mat-list-item href="#">HOW TO BUY</a>
-      <a mat-list-item href="#">HOW TO BUY</a>
-    </mat-nav-list>
-  </mat-sidenav>
-  <mat-sidenav-content>
-    <mat-toolbar color="primary">
-      <button
-        type="button"
-        aria-label="Toggle sidenav"
-        mat-icon-button
-        (click)="drawer.toggle()"
-        *ngIf="isHandset$ | async">
-        <mat-icon svgIcon="logo"></mat-icon>
-      </button>
-      <span class="example-small-icon"></span>
-      <mat-icon>{{iconTitle}}</mat-icon>
-      <span class="example-small-icon"></span>
-      {{pageTitle}}
-    </mat-toolbar>
-    <!-- Add Content Here -->
-  </mat-sidenav-content>
-</mat-sidenav-container>
+<!--<mat-sidenav-container class="sidenav-container" >-->
+<mat-drawer-container class="example-container" [hasBackdrop]="true">
+  <mat-drawer #drawer [mode]="'over'">
+
+    <div class="menuItems">
+      <button mat-button routerLink="/settings">SETTINGS</button>
+      <button mat-button routerLink="/about">ABOUT US</button>
+      <button mat-button routerLink="/about">HOW TO ORDER?</button>
+      <button mat-button routerLink="/about">ORDER FULFILLMENT TIME</button>
+      <button mat-button routerLink="/about">PAYMENT METHODS</button>
+      <button mat-button routerLink="/about">DELIVERY OPTIONS</button>
+      <button mat-button routerLink="/about">EMAIL</button>
+      <button mat-button routerLink="/about">FACEBOOK</button>
+      <button mat-button routerLink="/about">LINKEDIN</button>
+    </div>
+
+  </mat-drawer>
+<!--</mat-sidenav-content>-->
+<mat-toolbar color="primary">
+  <button (mouseenter)="playAudio()"
+    type="button"
+    aria-label="Toggle sidenav"
+    mat-icon-button
+    (click)="drawer.toggle()">
+    <mat-icon svgIcon="logo"></mat-icon>
+  </button>
+  <span class="example-medium-icon"></span>
+  <mat-icon>{{iconTitle}}</mat-icon>
+  <span class="example-small-icon"></span>
+  {{pageTitle}}
+  <span class="example-spacer"></span>
+  <button mat-icon-button matTooltip="Linkedin" (mouseenter)="playAudio()">
+    <mat-icon svgIcon="linkedin" class="right-icons" routerLink="/logging"></mat-icon>
+  </button>
+  <span class="example-medium-icon"></span>
+  <button mat-icon-button matTooltip="Facebook" (mouseenter)="playAudio()">
+    <mat-icon class="right-icons" routerLink="/logging">facebook</mat-icon>
+  </button>
+  <span class="example-medium-icon"></span>
+  <button mat-icon-button matTooltip="Email" (mouseenter)="playAudio()">
+    <mat-icon class="right-icons">email</mat-icon>
+  </button>
+  <span class="example-medium-icon"></span>
+  <button mat-icon-button matTooltip="Delivery Options" (mouseenter)="playAudio()">
+    <mat-icon class="right-icons">local_shipping</mat-icon>
+  </button>
+  <span class="example-medium-icon"></span>
+  <button mat-icon-button matTooltip="Payment methods" (mouseenter)="playAudio()">
+    <mat-icon class="right-icons">payment</mat-icon>
+  </button>
+  <span class="example-medium-icon"></span>
+  <button mat-icon-button matTooltip="Order Fulfillment Time" (mouseenter)="playAudio()">
+    <mat-icon class="right-icons">history_toggle_off</mat-icon>
+  </button>
+  <span class="example-medium-icon"></span>
+  <button mat-icon-button matTooltip="How to Order?" (mouseenter)="playAudio()">
+    <mat-icon svgIcon="order" class="right-icons"></mat-icon>
+  </button>
+  <span class="example-medium-icon"></span>
+  <button mat-icon-button matTooltip="About Us" (mouseenter)="playAudio()">
+    <mat-icon class="right-icons" routerLink="/about">info</mat-icon>
+  </button>
+  <span class="example-medium-icon"></span>
+
+  <!--      <button mat-icon-button matTooltip="Information" [matMenuTriggerFor]="helpMenuInfo"> <mat-icon class="right-icons">info</mat-icon> </button>-->
+  <!--      <span class="example-medium-icon"></span>-->
+
+  <button (mouseenter)="playAudio()" mat-icon-button matTooltip="Settings">
+    <mat-icon class="right-icons" routerLink="/settings">settings</mat-icon>
+  </button>
+</mat-toolbar>
+<!-- Add Content Here -->
+
+<mat-menu #helpMenuContact="matMenu">
+  <button mat-menu-item routerLink="/contact/facebook">email</button>
+  <button mat-menu-item routerLink="/contact/facebook">facebook</button>
+  <button mat-menu-item routerLink="/contact/facebook">linkedin</button>
+</mat-menu>
+
+<mat-menu #helpMenuInfo="matMenu">
+  <button mat-menu-item routerLink="/contact/facebook">About Us</button>
+  <!--    <br>-->
+  <button mat-menu-item routerLink="/contact/facebook">How to order a product?</button>
+  <!--    <br>-->
+  <button mat-menu-item routerLink="/contact/facebook">Order Fulfillment Time</button>
+  <!--    <br>-->
+  <button mat-menu-item routerLink="/contact/facebook">Payment Methods</button>
+  <!--    <br>-->
+  <button mat-menu-item routerLink="/contact/facebook">Delivery Options</button>
+</mat-menu>
+<!--</mat-sidenav-container>-->
+</mat-drawer-container>

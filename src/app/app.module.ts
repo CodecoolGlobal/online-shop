@@ -15,6 +15,7 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatButtonModule} from '@angular/material/button';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatListModule} from '@angular/material/list';
+import {MatIconModule } from '@angular/material/icon';
 import {MainNavComponent} from './shared/main-nav/main-nav.component';
 
 @NgModule({
@@ -37,6 +38,7 @@ import {MainNavComponent} from './shared/main-nav/main-nav.component';
     MatButtonModule,
     MatSidenavModule,
     MatListModule,
+    MatIconModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

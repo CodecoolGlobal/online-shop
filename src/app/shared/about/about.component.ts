@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import { moveIn, fallIn } from '../router.animation';
 
 @Component({
@@ -9,6 +9,7 @@ import { moveIn, fallIn } from '../router.animation';
   // host: {'[@moveIn': ''}
 })
 export class AboutComponent implements OnInit {
+  @ViewChild('matCard')
   state = '';
 
   constructor() { }
