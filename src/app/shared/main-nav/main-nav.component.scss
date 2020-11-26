@@ -46,6 +46,7 @@ mat-sidenav {
 
 mat-icon {
   transform: scale(2);
+  outline: none;
 }
 
 .sidenav-toolbar {
@@ -67,6 +68,17 @@ mat-drawer {
   display: flex;
   flex-direction: column;
   max-width: fit-content;
+}
+
+.mat-button {
+  text-align: start;
+
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+
 }
 
 //.example-container {

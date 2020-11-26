@@ -10,8 +10,9 @@
       <button mat-button routerLink="/about">PAYMENT METHODS</button>
       <button mat-button routerLink="/about">DELIVERY OPTIONS</button>
       <button mat-button routerLink="/about">EMAIL</button>
-      <button mat-button routerLink="/about">FACEBOOK</button>
-      <button mat-button routerLink="/about">LINKEDIN</button>
+      <a href="{{configData.facebook}}" target="_blank"><button mat-button>FACEBOOK</button> </a>
+      <a href="{{configData.linkedin}}" target="_blank"><button mat-button>LINKEDIN</button> </a>
+      <a href="{{configData.github}}" target="_blank"><button mat-button>GITHUB</button> </a>
     </div>
 
   </mat-drawer>
@@ -29,13 +30,25 @@
   <span class="example-small-icon"></span>
   {{pageTitle}}
   <span class="example-spacer"></span>
-  <button mat-icon-button matTooltip="Linkedin" (mouseenter)="playAudio()">
-    <mat-icon svgIcon="linkedin" class="right-icons" routerLink="/logging"></mat-icon>
+  <button mat-icon-button matTooltip="Shopping Card" matBadge="{{counter}}" matBadgePosition="after" matBadgeColor="accent" (mouseenter)="playAudio()">
+    <mat-icon class="right-icons">shopping_cart</mat-icon>
   </button>
   <span class="example-medium-icon"></span>
-  <button mat-icon-button matTooltip="Facebook" (mouseenter)="playAudio()">
-    <mat-icon class="right-icons" routerLink="/logging">facebook</mat-icon>
+  <button mat-icon-button matTooltip="Shopping Card" matBadge="{{counter}}" matBadgePosition="after" matBadgeColor="accent" (mouseenter)="playAudio()">
+    <mat-icon [color]="userStatusColor" class="right-icons">person</mat-icon>
   </button>
+  <span class="example-spacer"></span>
+  <a href="{{configData.github}}" target="_blank"><button mat-icon-button matTooltip="Github" (mouseenter)="playAudio()">
+    <mat-icon svgIcon="github" class="right-icons" routerLink="/logging"></mat-icon>
+  </button></a>
+  <span class="example-medium-icon"></span>
+  <a href="{{configData.linkedin}}" target="_blank"><button mat-icon-button matTooltip="Linkedin" (mouseenter)="playAudio()">
+    <mat-icon svgIcon="linkedin" class="right-icons" routerLink="/logging"></mat-icon>
+  </button></a>
+  <span class="example-medium-icon"></span>
+  <a href="{{configData.facebook}}" target="_blank"><button mat-icon-button matTooltip="Facebook" (mouseenter)="playAudio()">
+    <mat-icon class="right-icons" routerLink="/logging">facebook</mat-icon>
+  </button></a>
   <span class="example-medium-icon"></span>
   <button mat-icon-button matTooltip="Email" (mouseenter)="playAudio()">
     <mat-icon class="right-icons">email</mat-icon>
@@ -71,22 +84,22 @@
 </mat-toolbar>
 <!-- Add Content Here -->
 
-<mat-menu #helpMenuContact="matMenu">
-  <button mat-menu-item routerLink="/contact/facebook">email</button>
-  <button mat-menu-item routerLink="/contact/facebook">facebook</button>
-  <button mat-menu-item routerLink="/contact/facebook">linkedin</button>
-</mat-menu>
+<!--<mat-menu #helpMenuContact="matMenu">-->
+<!--  <button mat-menu-item routerLink="/contact/facebook">email</button>-->
+<!--  <button mat-menu-item routerLink="/contact/facebook">facebook</button>-->
+<!--  <button mat-menu-item routerLink="/contact/facebook">linkedin</button>-->
+<!--</mat-menu>-->
 
-<mat-menu #helpMenuInfo="matMenu">
-  <button mat-menu-item routerLink="/contact/facebook">About Us</button>
-  <!--    <br>-->
-  <button mat-menu-item routerLink="/contact/facebook">How to order a product?</button>
-  <!--    <br>-->
-  <button mat-menu-item routerLink="/contact/facebook">Order Fulfillment Time</button>
-  <!--    <br>-->
-  <button mat-menu-item routerLink="/contact/facebook">Payment Methods</button>
-  <!--    <br>-->
-  <button mat-menu-item routerLink="/contact/facebook">Delivery Options</button>
-</mat-menu>
+<!--<mat-menu #helpMenuInfo="matMenu">-->
+<!--  <button mat-menu-item routerLink="/contact/facebook">About Us</button>-->
+<!--  &lt;!&ndash;    <br>&ndash;&gt;-->
+<!--  <button mat-menu-item routerLink="/contact/facebook">How to order a product?</button>-->
+<!--  &lt;!&ndash;    <br>&ndash;&gt;-->
+<!--  <button mat-menu-item routerLink="/contact/facebook">Order Fulfillment Time</button>-->
+<!--  &lt;!&ndash;    <br>&ndash;&gt;-->
+<!--  <button mat-menu-item routerLink="/contact/facebook">Payment Methods</button>-->
+<!--  &lt;!&ndash;    <br>&ndash;&gt;-->
+<!--  <button mat-menu-item routerLink="/contact/facebook">Delivery Options</button>-->
+<!--</mat-menu>-->
 <!--</mat-sidenav-container>-->
 </mat-drawer-container>

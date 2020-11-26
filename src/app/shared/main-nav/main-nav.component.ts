@@ -1,4 +1,6 @@
-import {Component, Input} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {BackendService} from '../../services/backend.service';
+import {Observable} from 'rxjs';
 
 @Component({
   selector: 'app-main-nav',
@@ -6,14 +8,28 @@ import {Component, Input} from '@angular/core';
   styleUrls: ['./main-nav.component.scss']
 })
 
-export class MainNavComponent {
+export class MainNavComponent implements OnInit {
 
   @Input() pageTitle: string;
   @Input() iconTitle: string;
   @Input() helpTitle: string;
   audio = new Audio();
+  configData;
+  counter;
+  userStatusColor;
 
-  constructor() {}
+  constructor(private backendService: BackendService) {
+  }
+
+  ngOnInit(): void {
+    this.configData = this.backendService.getConfig();
+    this.counter = this.backendService.getCartTotal();
+    this.backendService.getCartTotal().subscribe((res) => {
+      this.counter = res;
+    });
+    this.backendService.getUserStatus().subscribe((res) => { this.userStatusColor = res ? 'warn' : 'primary';
+    });
+  }
 
   playAudio(): void {
     this.audio.src = '../../assets/mp3/pop.mp3';

@@ -115,5 +115,9 @@ export class MaterialModule {
       `order`,
       this.domSanitizer.bypassSecurityTrustResourceUrl('../assets/svgs/order.svg')
     );
+    this.matIconRegistry.addSvgIcon(
+      `github`,
+      this.domSanitizer.bypassSecurityTrustResourceUrl('../assets/svgs/github.svg')
+    );
   }
 }
