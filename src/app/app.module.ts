@@ -18,6 +18,7 @@ import {MatIconModule} from '@angular/material/icon';
 import {MainNavComponent} from './shared/main-nav/main-nav.component';
 import {SettingsComponent} from './settings/settings.component';
 import { SetproductComponent } from './admin/setproduct/setproduct.component';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -41,6 +42,8 @@ import { SetproductComponent } from './admin/setproduct/setproduct.component';
     MatSidenavModule,
     MatListModule,
     MatIconModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
