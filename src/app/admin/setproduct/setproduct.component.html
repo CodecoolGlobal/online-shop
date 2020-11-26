@@ -1,0 +1,18 @@
+<app-main-nav pageTitle="Settings" iconTitle="settings"></app-main-nav>
+
+<mat-card>
+  <mat-card-content>
+    <div *ngIf="(toggleField=='searchMode') else (toggleField=='addMode')? showAddMode : ((toggleField=='editMode')? showEditMode : showResMode)">
+<!--this is the search page-->
+    </div>
+  </mat-card-content>
+</mat-card>
+<ng-template #showAddMode>
+<!--this is the add page-->
+</ng-template>
+<ng-template #showEditMode>
+  <!--this is the edit page-->
+</ng-template>
+<ng-template #showResMode>
+  <!--this is the res page-->
+</ng-template>

@@ -8,15 +8,16 @@ import {AboutComponent} from './shared/about/about.component';
 import {AppRoutingModule} from './app-routing.module';
 import {MaterialModule} from './material.module';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {SettingsComponent} from './settings/settings.component';
 import {HttpClientModule} from '@angular/common/http';
 import {LayoutModule} from '@angular/cdk/layout';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatButtonModule} from '@angular/material/button';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatListModule} from '@angular/material/list';
-import {MatIconModule } from '@angular/material/icon';
+import {MatIconModule} from '@angular/material/icon';
 import {MainNavComponent} from './shared/main-nav/main-nav.component';
+import {SettingsComponent} from './settings/settings.component';
+import { SetproductComponent } from './admin/setproduct/setproduct.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import {MainNavComponent} from './shared/main-nav/main-nav.component';
     FooterComponent,
     AboutComponent,
     SettingsComponent,
-    MainNavComponent
+    MainNavComponent,
+    SetproductComponent,
   ],
   imports: [
     HttpClientModule,
