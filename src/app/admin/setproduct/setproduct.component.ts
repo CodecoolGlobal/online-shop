@@ -61,6 +61,24 @@ export class SetproductComponent implements OnInit, OnDestroy {
         () => { this.error = false; this.dataLoading = false; });
   }
 
+  getFilteredData(filters): void {
+    this.dataLoading = true;
+    this.querySubscription = this.backendService.getFilteredProducts('product', filters)
+      .subscribe(members => {
+          this.members = members;
+          this.dataSource = new MatTableDataSource(members);
+          this.dataSource.paginator = this.paginator;
+          this.dataSource.sort = this.sort;
+        },
+        (error) => {
+          this.error = true;
+          this.errorMessage = error.message;
+          this.dataLoading = false;
+        },
+        () => { this.error = false; this.dataLoading = false; });
+  }
+
+
   applyFilter(event: Event): void {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();

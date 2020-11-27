@@ -7,7 +7,7 @@
       <!--this is the search page-->
       <form #searchFormData="ngForm" class="example-form">
         <mat-card-actions>
-          <button type="button" (click)="toggle('resMode');" mat-raised-button [disabled]="!searchFormData.valid"
+          <button type="button" (click)="toggle('resMode');getFilteredData(searchFormData.value);" mat-raised-button [disabled]="!searchFormData.valid"
                   color="primary">Search
           </button>
           <!--        <span class="example-spacer"></span>-->
