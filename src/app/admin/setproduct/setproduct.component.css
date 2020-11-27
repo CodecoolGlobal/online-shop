@@ -1,0 +1,10 @@
+.mat-button {
+  padding-left: 0;
+  padding-right: 0;
+  width: fit-content!important;
+  min-width: unset!important;
+}
+
+table {
+  width: 100%;
+}
