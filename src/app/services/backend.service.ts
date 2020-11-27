@@ -31,6 +31,14 @@ export class BackendService {
       }, 2000);
     }));
   }
-
-
+    getProducts(collType): Observable<any> {
+      const fakeResponse = [{
+        category: 'test', scategory: 'test', name: 'Product Name', price: '300', _id: '123'
+      }];
+      return new Observable<any>((observer => {
+        setTimeout(() => {
+          observer.next(fakeResponse);
+        }, 2000);
+      }));
+    }
 }
