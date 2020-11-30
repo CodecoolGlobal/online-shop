@@ -3,7 +3,7 @@
   <mat-drawer #drawer [mode]="'over'">
 
 <!--    <div>-->
-<!--      <button class="menuItems" mat-button routerLink="/setproduct">SETTINGS</button>-->
+      <button class="menuItems" mat-button routerLink="/admin">ADMIN-SETTINGS</button>
       <button class="menuItems" mat-button routerLink="/about">INFORMATION</button>
       <button class="menuItems" mat-button routerLink="/about">HOW TO ORDER?</button>
       <button class="menuItems" mat-button routerLink="/about">ORDER FULFILLMENT TIME</button>
@@ -35,7 +35,7 @@
   </button>
   <span class="example-medium-icon"></span>
   <button mat-icon-button matTooltip="Shopping Card" matBadge="{{counter}}" matBadgePosition="after" matBadgeColor="accent" (mouseenter)="playAudio()">
-    <mat-icon [color]="userStatusColor" class="right-icons">person</mat-icon>
+    <mat-icon [color]="userStatusColor" class="right-icons" routerLink="/settings">person</mat-icon>
   </button>
   <span class="example-spacer"></span>
   <a href="{{configData.github}}" target="_blank"><button mat-icon-button matTooltip="Github" (mouseenter)="playAudio()">

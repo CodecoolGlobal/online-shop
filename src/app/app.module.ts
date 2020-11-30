@@ -23,6 +23,11 @@ import { AdmintabComponent } from './admin/admintab/admintab.component';
 import { AdminordersComponent } from './admin/adminorders/adminorders.component';
 import { AdmincartsComponent } from './admin/admincarts/admincarts.component';
 import { AdminusersComponent } from './admin/adminusers/adminusers.component';
+import { OrdersComponent } from './user/orders/orders.component';
+import { CartsComponent } from './user/carts/carts.component';
+import { UserComponent } from './user/user/user.component';
+import { ProductComponent } from './user/product/product.component';
+import { LoginComponent } from './user/login/login.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +42,11 @@ import { AdminusersComponent } from './admin/adminusers/adminusers.component';
     AdminordersComponent,
     AdmincartsComponent,
     AdminusersComponent,
+    OrdersComponent,
+    CartsComponent,
+    UserComponent,
+    ProductComponent,
+    LoginComponent,
   ],
   imports: [
     HttpClientModule,
