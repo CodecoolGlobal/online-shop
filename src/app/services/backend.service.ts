@@ -92,4 +92,21 @@ export class BackendService {
     }));
   }
 
+  updateShoppingInterest(collType, data): Observable<any> {
+    const fakeResponse = true;
+    return new Observable<any>((observer => {
+      setTimeout(() => {
+        observer.next(fakeResponse);
+      }, 2000);
+    }));
+  }
+
+  updateShoppingCart(collType, data): Observable<any> {
+    const fakeResponse = true;
+    return new Observable<any>((observer => {
+      setTimeout(() => {
+        observer.next(fakeResponse);
+      }, 2000);
+    }));
+  }
 }
