@@ -19,6 +19,10 @@ import {MainNavComponent} from './shared/main-nav/main-nav.component';
 import {SettingsComponent} from './settings/settings.component';
 import { SetproductComponent } from './admin/setproduct/setproduct.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { AdmintabComponent } from './admin/admintab/admintab.component';
+import { AdminordersComponent } from './admin/adminorders/adminorders.component';
+import { AdmincartsComponent } from './admin/admincarts/admincarts.component';
+import { AdminusersComponent } from './admin/adminusers/adminusers.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +33,10 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
     SettingsComponent,
     MainNavComponent,
     SetproductComponent,
+    AdmintabComponent,
+    AdminordersComponent,
+    AdmincartsComponent,
+    AdminusersComponent,
   ],
   imports: [
     HttpClientModule,
