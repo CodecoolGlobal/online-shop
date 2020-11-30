@@ -3,13 +3,13 @@ import {CommonModule} from '@angular/common';
 import {RouterModule, Routes} from '@angular/router';
 import {AboutComponent} from './shared/about/about.component';
 import {SettingsComponent} from './settings/settings.component';
-import {SetproductComponent} from './admin/setproduct/setproduct.component';
+import {AdmintabComponent} from './admin/admintab/admintab.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/about', pathMatch: 'full' },
   { path: 'about', component: AboutComponent },
   { path: 'settings', component: SettingsComponent },
-  { path: 'setproduct', component: SetproductComponent },
+  { path: 'admin', component: AdmintabComponent },
   { path: '**', redirectTo: '/about', pathMatch: 'full'}
 ];
 

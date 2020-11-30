@@ -3,7 +3,7 @@
   <mat-drawer #drawer [mode]="'over'">
 
 <!--    <div>-->
-      <button class="menuItems" mat-button routerLink="/setproduct">SETTINGS</button>
+<!--      <button class="menuItems" mat-button routerLink="/setproduct">SETTINGS</button>-->
       <button class="menuItems" mat-button routerLink="/about">INFORMATION</button>
       <button class="menuItems" mat-button routerLink="/about">HOW TO ORDER?</button>
       <button class="menuItems" mat-button routerLink="/about">ORDER FULFILLMENT TIME</button>
@@ -78,9 +78,10 @@
   <!--      <button mat-icon-button matTooltip="Information" [matMenuTriggerFor]="helpMenuInfo"> <mat-icon class="right-icons">info</mat-icon> </button>-->
   <!--      <span class="example-medium-icon"></span>-->
 
-  <button (mouseenter)="playAudio()" mat-icon-button matTooltip="Settings">
-    <mat-icon class="right-icons" routerLink="/setproduct">settings</mat-icon>
+  <button (mouseenter)="playAudio()" mat-icon-button matTooltip="AdminSettings">
+    <mat-icon class="right-icons" routerLink="/admin">settings</mat-icon>
   </button>
+
 </mat-toolbar>
 <!-- Add Content Here -->
 
