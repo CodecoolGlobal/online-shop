@@ -14,6 +14,7 @@ export class SetproductComponent implements OnInit, OnDestroy {
   toggleField: string;
   dataSource: MatTableDataSource<any>;
   members: any[];
+  myDocData: any;
 
   savedChanges = false;
   error = false;
@@ -23,7 +24,7 @@ export class SetproductComponent implements OnInit, OnDestroy {
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
-  displayColumns = ['category', 'scategory', 'name', 'price', '_id'];
+  displayedColumns = ['category', 'scategory', 'name', 'price', '_id'];
 
   constructor(private backendService: BackendService) {
   }
@@ -48,17 +49,21 @@ export class SetproductComponent implements OnInit, OnDestroy {
     this.dataLoading = true;
     this.querySubscription = this.backendService.getProducts('product')
       .subscribe(members => {
-        this.members = members;
-        this.dataSource = new MatTableDataSource(members);
-        this.dataSource.paginator = this.paginator;
-        this.dataSource.sort = this.sort;
-      },
-        (error) => {
-        this.error = true;
-        this.errorMessage = error.message;
-        this.dataLoading = false;
+          this.members = members;
+          this.dataSource = new MatTableDataSource(members);
+          this.dataSource.paginator = this.paginator;
+          this.dataSource.sort = this.sort;
+          this.dataLoading = false;
         },
-        () => { this.error = false; this.dataLoading = false; });
+        (error) => {
+          this.error = true;
+          this.errorMessage = error.message;
+          this.dataLoading = false;
+        },
+        () => {
+          this.error = false;
+          this.dataLoading = false;
+        });
   }
 
   getFilteredData(filters): void {
@@ -69,16 +74,101 @@ export class SetproductComponent implements OnInit, OnDestroy {
           this.dataSource = new MatTableDataSource(members);
           this.dataSource.paginator = this.paginator;
           this.dataSource.sort = this.sort;
+          this.dataLoading = false;
         },
         (error) => {
           this.error = true;
           this.errorMessage = error.message;
           this.dataLoading = false;
         },
-        () => { this.error = false; this.dataLoading = false; });
+        () => {
+          this.error = false;
+          this.dataLoading = false;
+        });
   }
 
+  setData(formData): void {
+    this.dataLoading = true;
+    this.querySubscription = this.backendService.setProducts('product', formData)
+      .subscribe(members => {
+          if (members) {
+            this.savedChanges = true;
+            this.dataLoading = false;
+          }
+        },
+        (error) => {
+          this.error = true;
+          this.errorMessage = error.message;
+          this.dataLoading = false;
+        },
+        () => {
+          this.error = false;
+          this.dataLoading = false;
+        });
+  }
 
+  updateData(formData): void {
+    this.dataLoading = true;
+    this.querySubscription = this.backendService.updateProducts('product', formData)
+      .subscribe(members => {
+          if (members) {
+            this.savedChanges = true;
+            this.dataLoading = false;
+          }
+        },
+        (error) => {
+          this.error = true;
+          this.errorMessage = error.message;
+          this.dataLoading = false;
+        },
+        () => {
+          this.error = false;
+          this.dataLoading = false;
+        });
+  }
+
+  getDoc(docId): void {
+    this.dataLoading = true;
+    this.querySubscription = this.backendService.getOneProductDoc('product', docId)
+      .subscribe(res => {
+          if (res) {
+            this.myDocData = res;
+            this.toggle('editMode');
+            this.dataLoading = false;
+          }
+        },
+        (error) => {
+          this.error = true;
+          this.errorMessage = error.message;
+          this.dataLoading = false;
+        },
+        () => {
+          this.error = false;
+          this.dataLoading = false;
+        });
+  }
+
+  delDoc(docId): void {
+    if (confirm('Are you sure You want to delete this record?')) {
+      this.dataLoading = true;
+      this.querySubscription = this.backendService.delOneProductDoc('product', docId)
+        .subscribe(res => {
+            if (res) {
+              this.toggle('searchMode');
+              this.dataLoading = false;
+            }
+          },
+          (error) => {
+            this.error = true;
+            this.errorMessage = error.message;
+            this.dataLoading = false;
+          },
+          () => {
+            this.error = false;
+            this.dataLoading = false;
+          });
+    }
+  }
   applyFilter(event: Event): void {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
@@ -93,5 +183,4 @@ export class SetproductComponent implements OnInit, OnDestroy {
       this.querySubscription.unsubscribe();
     }
   }
-
 }

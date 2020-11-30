@@ -7,7 +7,8 @@
       <!--this is the search page-->
       <form #searchFormData="ngForm" class="example-form">
         <mat-card-actions>
-          <button type="button" (click)="toggle('resMode');getFilteredData(searchFormData.value);" mat-raised-button [disabled]="!searchFormData.valid"
+          <button type="button" (click)="toggle('resMode');getFilteredData(searchFormData.value);" mat-raised-button
+                  [disabled]="!searchFormData.valid"
                   color="primary">Search
           </button>
           <!--        <span class="example-spacer"></span>-->
@@ -16,11 +17,11 @@
             <mat-icon color="primary" (click)="toggle('addMode');">add</mat-icon>
           </button>
           <button mat-button matTooltip="Show Recent Results">
-            <mat-icon color="primary" (click)="toggle('resMode');">cached</mat-icon>
+            <mat-icon color="primary" (click)="toggle('resMode');getData();">cached</mat-icon>
           </button>
         </mat-card-actions>
         <mat-form-field class="example-form">
-          <input matInput type="text" placeholder="Category" id="category" name="cateogry" #category="ngModel" ngModel
+          <input matInput type="text" placeholder="Category" id="category" name="category" #category="ngModel" ngModel
                  minlength="3" maxlength="50">
         </mat-form-field>
         <br>
@@ -76,49 +77,49 @@
       </mat-card-actions>
 
       <mat-form-field>
-        <input matInput placeholder="Category" name="category" id="acategory" ngModel required minlength="1">
+        <input matInput placeholder="Category" name="category" id="category" ngModel required minlength="1">
         <mat-hint align="end">eg. Men Garments</mat-hint>
       </mat-form-field>
       <mat-form-field>
-        <input matInput placeholder="Sub Category" name="scategory" id="ascategory" ngModel required minlength="1">
+        <input matInput placeholder="Sub Category" name="scategory" id="scategory" ngModel required minlength="1">
         <mat-hint align="end">eg. Shirt</mat-hint>
       </mat-form-field>
       <br>
       <mat-form-field>
-        <textarea matInput placeholder="*IMP*: Search use Tags Text" name="tags" id="atags" ngModel required
+        <textarea matInput placeholder="*IMP*: Search use Tags Text" name="tags" id="tags" ngModel required
                   minlength="1"></textarea>
         <mat-hint align="end">eg. Men,Reading,Glasses</mat-hint>
       </mat-form-field>
       <br>
       <mat-form-field>
-        <input matInput placeholder="Product Name" name="name" id="aname" ngModel required minlength="1">
+        <input matInput placeholder="Product Name" name="name" id="name" ngModel required minlength="1">
         <mat-hint align="end">eg. Shirt</mat-hint>
       </mat-form-field>
       <mat-form-field>
-        <input matInput placeholder="Short Name" name="sname" id="asname" ngModel>
+        <input matInput placeholder="Short Name" name="sname" id="sname" ngModel>
       </mat-form-field>
       <mat-form-field>
-        <input matInput placeholder="Long Name" name="lname" id="alname" ngModel>
-      </mat-form-field>
-      <br>
-      <mat-form-field>
-        <textarea matInput placeholder="Description" name="descr" id="adescr" ngModel></textarea>
+        <input matInput placeholder="Long Name" name="lname" id="lname" ngModel>
       </mat-form-field>
       <br>
       <mat-form-field>
-        <input matInput placeholder="Color" name="color" id="acolor" ngModel>
+        <textarea matInput placeholder="Description" name="descr" id="descr" ngModel></textarea>
+      </mat-form-field>
+      <br>
+      <mat-form-field>
+        <input matInput placeholder="Color" name="color" id="color" ngModel>
       </mat-form-field>
       <mat-form-field>
-        <input matInput placeholder="Size" name="size" id="asize" ngModel>
+        <input matInput placeholder="Size" name="size" id="size" ngModel>
       </mat-form-field>
       <mat-form-field>
-        <input matInput placeholder="Price" name="price" id="aprice" ngModel required pattern="[0-9]+">
+        <input matInput placeholder="Price" name="price" id="price" ngModel required pattern="[0-9]+">
       </mat-form-field>
       <mat-form-field>
-        <input matInput placeholder="Shipping" name="shipping" id="ashipping" ngModel required pattern="[0-9]+">
+        <input matInput placeholder="Shipping" name="shipping" id="shipping" ngModel required pattern="[0-9]+">
       </mat-form-field>
       <mat-form-field>
-        <input matInput placeholder="Discount" name="discount" id="adiscount" ngModel required pattern="[0-9]+">
+        <input matInput placeholder="Discount" name="discount" id="discount" ngModel required pattern="[0-9]+">
         <mat-hint align="end">eg. 0 if no discount is offered.</mat-hint>
       </mat-form-field>
     </div>
@@ -154,55 +155,55 @@
       </mat-card-actions>
 
       <mat-form-field>
-        <input matInput placeholder="Category" name="ucategory" id="ucategory" [ngModel]="myDocData.category" required
+        <input matInput placeholder="Category" name="category" id="category" [ngModel]="myDocData.category" required
                minlength="1">
         <mat-hint align="end">eg. Men Garments</mat-hint>
       </mat-form-field>
       <mat-form-field>
-        <input matInput placeholder="Sub Category" name="uscategory" id="uscategory" [ngModel]="myDocData.scategory"
+        <input matInput placeholder="Sub Category" name="scategory" id="scategory" [ngModel]="myDocData.scategory"
                required minlength="1">
         <mat-hint align="end">eg. Shirt</mat-hint>
       </mat-form-field>
       <br>
       <mat-form-field>
-        <textarea matInput placeholder="*IMP*: Search use Tags Text" name="utags" id="utags" [ngModel]="myDocData.tags"
+        <textarea matInput placeholder="*IMP*: Search use Tags Text" name="tags" id="tags" [ngModel]="myDocData.tags"
                   required
                   minlength="1"></textarea>
         <mat-hint align="end">eg. Men,Reading,Glasses</mat-hint>
       </mat-form-field>
       <br>
       <mat-form-field>
-        <input matInput placeholder="Product Name" name="uname" id="uname" [ngModel]="myDocData.name" required
+        <input matInput placeholder="Product Name" name="name" id="name" [ngModel]="myDocData.name" required
                minlength="1">
         <mat-hint align="end">eg. Shirt</mat-hint>
       </mat-form-field>
       <mat-form-field>
-        <input matInput placeholder="Short Name" name="usname" id="usname" [ngModel]="myDocData.sname">
+        <input matInput placeholder="Short Name" name="sname" id="sname" [ngModel]="myDocData.sname">
       </mat-form-field>
       <mat-form-field>
-        <input matInput placeholder="Long Name" name="ulname" id="ulname" [ngModel]="myDocData.lname">
-      </mat-form-field>
-      <br>
-      <mat-form-field>
-        <textarea matInput placeholder="Description" name="descr" id="udescr" [ngModel]="myDocData.descr"></textarea>
+        <input matInput placeholder="Long Name" name="lname" id="lname" [ngModel]="myDocData.lname">
       </mat-form-field>
       <br>
       <mat-form-field>
-        <input matInput placeholder="Color" name="color" id="ucolor" [ngModel]="myDocData.color">
+        <textarea matInput placeholder="Description" name="descr" id="descr" [ngModel]="myDocData.descr"></textarea>
+      </mat-form-field>
+      <br>
+      <mat-form-field>
+        <input matInput placeholder="Color" name="color" id="color" [ngModel]="myDocData.color">
       </mat-form-field>
       <mat-form-field>
-        <input matInput placeholder="Size" name="size" id="usize" [ngModel]="myDocData.size">
+        <input matInput placeholder="Size" name="size" id="size" [ngModel]="myDocData.size">
       </mat-form-field>
       <mat-form-field>
-        <input matInput placeholder="Price" name="price" id="uprice" [ngModel]="myDocData.price" required
+        <input matInput placeholder="Price" name="price" id="price" [ngModel]="myDocData.price" required
                pattern="[0-9]+">
       </mat-form-field>
       <mat-form-field>
-        <input matInput placeholder="Shipping" name="shipping" id="ushipping" [ngModel]="myDocData.shipping" required
+        <input matInput placeholder="Shipping" name="shipping" id="shipping" [ngModel]="myDocData.shipping" required
                pattern="[0-9]+">
       </mat-form-field>
       <mat-form-field>
-        <input matInput placeholder="Discount" name="discount" id="udiscount" [ngModel]="myDocData.discount" required
+        <input matInput placeholder="Discount" name="discount" id="discount" [ngModel]="myDocData.discount" required
                pattern="[0-9]+">
         <mat-hint align="end">eg. 0 if no discount is offered.</mat-hint>
       </mat-form-field>
@@ -216,6 +217,7 @@
       <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Search Recent Results">
     </mat-form-field>
   </div>
+
   <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
     <!--- Note that these columns can be defined in any order.
@@ -228,7 +230,7 @@
     </ng-container>
 
     <!-- Name Column -->
-    <ng-container matColumnDef="subcategory">
+    <ng-container matColumnDef="scategory">
       <th mat-header-cell *matHeaderCellDef> SubCategory</th>
       <td mat-cell *matCellDef="let row"> {{row.scategory}} </td>
     </ng-container>
@@ -249,29 +251,29 @@
       <th mat-header-cell *matHeaderCellDef> Action</th>
       <td mat-cell *matCellDef="let row">
 
-        <button mat-icon-button matTooltip="Show Picture" *ngIf="row.path"
-                (click)="getPic(row.path);this.showHostSelfie=true;">
-          <mat-icon color="primary">photo_camera</mat-icon>
-        </button>
-        <button mat-icon-button matTooltip="Remove Picture" *ngIf="row.path"
-                (click)="deleteProductPic(row._id);this.showHostSelfie=false;">
-          <mat-icon color="primary">camera_roll</mat-icon>
-        </button>
-        <button mat-icon-button matTooltip="Take Picture" (click)="this.myDocId=row._id;this.takeHostSelfie=true;"
-                class="label-error"
-                *ngIf="!row.path" class="label-error">
-          <mat-icon>camera_roll</mat-icon>
-        </button>
+        <!--        <button mat-icon-button matTooltip="Show Picture" *ngIf="row.path"-->
+        <!--                (click)="getPic(row.path);this.showHostSelfie=true;">-->
+        <!--          <mat-icon color="primary">photo_camera</mat-icon>-->
+        <!--        </button>-->
+        <!--        <button mat-icon-button matTooltip="Remove Picture" *ngIf="row.path"-->
+        <!--                (click)="deleteProductPic(row._id);this.showHostSelfie=false;">-->
+        <!--          <mat-icon color="primary">camera_roll</mat-icon>-->
+        <!--        </button>-->
+        <!--        <button mat-icon-button matTooltip="Take Picture" (click)="this.myDocId=row._id;this.takeHostSelfie=true;"-->
+        <!--                class="label-error"-->
+        <!--                *ngIf="!row.path" class="label-error">-->
+        <!--          <mat-icon>camera_roll</mat-icon>-->
+        <!--        </button>-->
+
         <button mat-icon-button matTooltip="Edit" (click)="getDoc(row._id)">
           <mat-icon color="primary">edit</mat-icon>
         </button>
-        <button mat-icon-button matTooltip="Delete" (click)="deleteDoc(row._id)">
+        <button mat-icon-button matTooltip="Delete" (click)="delDoc(row._id)">
           <mat-icon color="primary">delete</mat-icon>
         </button>
 
       </td>
     </ng-container>
-
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>

@@ -2,18 +2,18 @@
 <mat-drawer-container class="example-container" [hasBackdrop]="true">
   <mat-drawer #drawer [mode]="'over'">
 
-    <div class="menuItems">
-      <button mat-button routerLink="/setproduct">SETTINGS</button>
-      <button mat-button routerLink="/about">INFORMATION</button>
-      <button mat-button routerLink="/about">HOW TO ORDER?</button>
-      <button mat-button routerLink="/about">ORDER FULFILLMENT TIME</button>
-      <button mat-button routerLink="/about">PAYMENT METHODS</button>
-      <button mat-button routerLink="/about">DELIVERY OPTIONS</button>
-      <button mat-button routerLink="/about">EMAIL</button>
-      <a href="{{configData.facebook}}" target="_blank"><button mat-button>FACEBOOK</button> </a>
-      <a href="{{configData.linkedin}}" target="_blank"><button mat-button>LINKEDIN</button> </a>
-      <a href="{{configData.github}}" target="_blank"><button mat-button>GITHUB</button> </a>
-    </div>
+<!--    <div>-->
+      <button class="menuItems" mat-button routerLink="/setproduct">SETTINGS</button>
+      <button class="menuItems" mat-button routerLink="/about">INFORMATION</button>
+      <button class="menuItems" mat-button routerLink="/about">HOW TO ORDER?</button>
+      <button class="menuItems" mat-button routerLink="/about">ORDER FULFILLMENT TIME</button>
+      <button class="menuItems" mat-button routerLink="/about">PAYMENT METHODS</button>
+      <button class="menuItems" mat-button routerLink="/about">DELIVERY OPTIONS</button>
+      <button class="menuItems" mat-button routerLink="/about">EMAIL</button>
+      <a href="{{configData.facebook}}" target="_blank"><button class="menuItems" mat-button>FACEBOOK</button> </a>
+      <a href="{{configData.linkedin}}" target="_blank"><button class="menuItems" mat-button>LINKEDIN</button> </a>
+      <a href="{{configData.github}}" target="_blank"><button class="menuItems" mat-button>GITHUB</button> </a>
+<!--    </div>-->
 
   </mat-drawer>
 <!--</mat-sidenav-content>-->
