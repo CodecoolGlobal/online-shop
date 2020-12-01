@@ -1,1 +1,209 @@
-<p>admincarts works!</p>
+<mat-card>
+  <mat-card-content>
+    <div
+      *ngIf="(toggleField=='searchMode') else ((toggleField=='editMode')? showEditMode : showResMode)">
+      <!--this is the search page-->
+      <form #searchFormData="ngForm" class="example-form">
+        <mat-card-actions>
+          <button type="button" (click)="toggle('resMode');getFilteredData(searchFormData.value);" mat-raised-button
+                  [disabled]="!searchFormData.valid"
+                  color="primary">Search
+          </button>
+          <!--        <span class="example-spacer"></span>-->
+          <!--          <span class="example-spacer"></span>-->
+          <button mat-button matTooltip="Show Recent Results">
+            <mat-icon color="primary" (click)="toggle('resMode');getData();">cached</mat-icon>
+          </button>
+        </mat-card-actions>
+        <mat-form-field class="example-form">
+          <input matInput type="text" placeholder="User Id" id="userid" name="userid" #userid="ngModel" ngModel
+                 minlength="3" maxlength="50">
+        </mat-form-field>
+        <br>
+        <mat-form-field class="example-form">
+          <input matInput type="text" placeholder="Name" id="name" name="name" #name="ngModel" ngModel
+                 minlength="3" maxlength="50">
+        </mat-form-field>
+        <br>
+        <mat-form-field class="example-form">
+          <input matInput [matDatepicker]="pickerfromdt" placeholder="From Date" id="fromdt" name="formdt"
+                 #fromdt="ngModel" ngModel>
+          <mat-datepicker-toggle matSuffix [for]="pickerfromdt"></mat-datepicker-toggle>
+          <mat-datepicker #pickerfromdt></mat-datepicker>
+        </mat-form-field>
+        <mat-form-field class="example-form">
+          <input matInput [matDatepicker]="pickertodt" placeholder="To Date" id="todt" name="todt" #todt="ngModel"
+                 ngModel>
+          <mat-datepicker-toggle matSuffix [for]="pickertodt"></mat-datepicker-toggle>
+          <mat-datepicker #pickertodt></mat-datepicker>
+        </mat-form-field>
+      </form>
+    </div>
+  </mat-card-content>
+</mat-card>
+
+<ng-template #showEditMode>
+  <!--this is the edit page-->
+  <form #editDataForm="ngForm" (ngSubmit)="updateData(editDataForm.value);" novalidate>
+    <input type="hidden" name="_id" id="_id" [ngModel]="myDocData._id" required>
+    <mat-error *ngIf="savedChanges">
+      Data is saved.
+      <label class="small-spacer"></label>
+      <mat-icon (click)="this.editDataForm.reset();savedChanges=false;toggle('searchMode');">clear</mat-icon>
+    </mat-error>
+
+    <div *ngIf="!savedChanges">
+      <mat-progress-bar mode="indeterminate" *ngIf="dataLoading"></mat-progress-bar>
+      <mat-error *ngIf="error">Error: {{ errorMessage }}</mat-error>
+      <mat-card-actions align="start">
+        <button type="submit" mat-raised-button [disabled]="!this.editDataForm.valid || this.editDataForm.pristine"
+                color="primary">Update
+        </button>
+        <span class="med-spacer"></span>
+        <button mat-button matTooltip="Search">
+          <mat-icon color="primary" (click)="toggle('searchMode');">search</mat-icon>
+        </button>
+        <span class="med-spacer"></span>
+        <button mat-button matTooltip="Show Recent Results">
+          <mat-icon color="primary" (click)="toggle('resMode');getData();">cached</mat-icon>
+        </button>
+      </mat-card-actions>
+
+      <mat-form-field>
+        <input matInput placeholder="User ID" name="userid" id="userid" [ngModel]="myDocData.userid" required
+               minlength="1">
+        <mat-hint align="end">User Id</mat-hint>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Category" name="category" id="category" [ngModel]="myDocData.category" required
+               minlength="1">
+        <mat-hint align="end">User Id</mat-hint>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Sub Category" name="scategory" id="scategory" [ngModel]="myDocData.scategory"
+               required minlength="1">
+        <mat-hint align="end">eg. Shirt</mat-hint>
+      </mat-form-field>
+      <br>
+      <mat-form-field>
+        <textarea matInput placeholder="*IMP*: Search use Tags Text" name="tags" id="tags" [ngModel]="myDocData.tags"
+                  required
+                  minlength="1"></textarea>
+        <mat-hint align="end">eg. Men,Reading,Glasses</mat-hint>
+      </mat-form-field>
+      <br>
+      <mat-form-field>
+        <input matInput placeholder="Product Name" name="name" id="name" [ngModel]="myDocData.name" required
+               minlength="1">
+        <mat-hint align="end">eg. Shirt</mat-hint>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Short Name" name="sname" id="sname" [ngModel]="myDocData.sname">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Long Name" name="lname" id="lname" [ngModel]="myDocData.lname">
+      </mat-form-field>
+      <br>
+      <mat-form-field>
+        <textarea matInput placeholder="Description" name="descr" id="descr" [ngModel]="myDocData.descr"></textarea>
+      </mat-form-field>
+      <br>
+      <mat-form-field>
+        <input matInput placeholder="Color" name="color" id="color" [ngModel]="myDocData.color">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Size" name="size" id="size" [ngModel]="myDocData.size">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Qty" name="qty" id="qty" [ngModel]="myDocData.qty" required
+               pattern="[0-9]+">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Price" name="price" id="price" [ngModel]="myDocData.price" required
+               pattern="[0-9]+">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Shipping" name="shipping" id="shipping" [ngModel]="myDocData.shipping" required
+               pattern="[0-9]+">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Discount" name="discount" id="discount" [ngModel]="myDocData.discount" required
+               pattern="[0-9]+">
+        <mat-hint align="end">eg. 0 if no discount is offered.</mat-hint>
+      </mat-form-field>
+    </div>
+  </form>
+</ng-template>
+
+<ng-template #showResMode>
+  <!--  HERE HERE HERE !!!-->
+  <button mat-button matTooltip="Show Recent Results">
+    <mat-icon color="primary" (click)="toggle('searchMode');getData();">search</mat-icon>
+  </button>
+  <div class="example-header">
+    <mat-form-field>
+      <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Search Recent Results">
+    </mat-form-field>
+  </div>
+
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+    <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+
+    <!-- Position Column -->
+    <ng-container matColumnDef="category">
+      <th mat-header-cell *matHeaderCellDef> Category</th>
+      <td mat-cell *matCellDef="let row"> {{row.category}} </td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="scategory">
+      <th mat-header-cell *matHeaderCellDef> SubCategory</th>
+      <td mat-cell *matCellDef="let row"> {{row.scategory}} </td>
+    </ng-container>
+
+    <!-- Weight Column -->
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef> Name</th>
+      <td mat-cell *matCellDef="let row"> {{row.name}} </td>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="price">
+      <th mat-header-cell *matHeaderCellDef> Price</th>
+      <td mat-cell *matCellDef="let row"> {{row.price}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="_id">
+      <th mat-header-cell *matHeaderCellDef> Action</th>
+      <td mat-cell *matCellDef="let row">
+
+        <!--        <button mat-icon-button matTooltip="Show Picture" *ngIf="row.path"-->
+        <!--                (click)="getPic(row.path);this.showHostSelfie=true;">-->
+        <!--          <mat-icon color="primary">photo_camera</mat-icon>-->
+        <!--        </button>-->
+        <!--        <button mat-icon-button matTooltip="Remove Picture" *ngIf="row.path"-->
+        <!--                (click)="deleteProductPic(row._id);this.showHostSelfie=false;">-->
+        <!--          <mat-icon color="primary">camera_roll</mat-icon>-->
+        <!--        </button>-->
+        <!--        <button mat-icon-button matTooltip="Take Picture" (click)="this.myDocId=row._id;this.takeHostSelfie=true;"-->
+        <!--                class="label-error"-->
+        <!--                *ngIf="!row.path" class="label-error">-->
+        <!--          <mat-icon>camera_roll</mat-icon>-->
+        <!--        </button>-->
+
+        <button mat-icon-button matTooltip="Edit" (click)="getDoc(row._id)">
+          <mat-icon color="primary">edit</mat-icon>
+        </button>
+        <button mat-icon-button matTooltip="Delete" (click)="delDoc(row._id)">
+          <mat-icon color="primary">delete</mat-icon>
+        </button>
+
+      </td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+  <!--this is the res page-->
+</ng-template>
