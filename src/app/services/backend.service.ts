@@ -1,19 +1,46 @@
 import {Injectable} from '@angular/core';
 import {environment} from '../../environments/environment';
 import {observable, Observable} from 'rxjs';
+import {AngularFireAuth} from '@angular/fire/auth';
+import firebase from 'firebase';
 
 @Injectable({
   providedIn: 'root'
 })
 export class BackendService {
 
-  constructor() {
+  constructor(public afAuth: AngularFireAuth) {
   }
 
   getConfig(): object {
     return environment.social;
   }
 
+  login(loginType, formData?): ReturnType<firebase.auth.Auth['signInWithEmailAndPassword' | 'signInWithRedirect']> {
+    if (formData) {
+      return this.afAuth.signInWithEmailAndPassword(formData.email, formData.password);
+    } else {
+      let loginMethod;
+      if (loginType === 'GOOGLE') {
+        loginMethod = new firebase.auth.GoogleAuthProvider();
+      }
+      return this.afAuth.signInWithRedirect(loginMethod);
+    }
+  }
+
+  redirectLogin(): ReturnType<firebase.auth.Auth['getRedirectResult']> {
+    return this.afAuth.getRedirectResult();
+  }
+
+  logout(): ReturnType<firebase.auth.Auth['signOut']> {
+    return this.afAuth.signOut();
+  }
+
+  isUserLoggedIn(): Observable<firebase.User> {
+    return this.afAuth.authState;
+  }
+
+  // fake functions for testing purposes only!
   getCartTotal(): Observable<any> {
     const fakeResponse = '10';
     return new Observable<any>((observer => {

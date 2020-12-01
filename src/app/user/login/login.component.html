@@ -1,8 +1,8 @@
 <app-main-nav pageTitle="SignIn" iconTitle="account_circle"></app-main-nav>
 <mat-card>
-  <div *ngIf="userloggedin; else showShopping">
+  <div *ngIf="afAuth.user | async as user; else showShopping">
     <button type="button" routerLink="/product" mat-raised-button color="primary">Continue Shopping</button>
-    <button type="button" (click)="logout();" routerLink="/product" mat-raised-button color="primary">Logout</button>
+    <button type="button" (click)="logout();" mat-raised-button color="primary">Logout</button>
   </div>
   <ng-template #showShopping>
     <mat-card-content>
@@ -34,11 +34,11 @@
       </form>
     </mat-card-content>
 
-    <mat-card-content *ngIf="socialAuth">
+    <mat-card-content>
       <mat-chip-list class="mat-chip-list-stacked" style="margin-left: 170px;">
-        <mat-chip color="primary" selected="true" (click)="login('FB')">
-          Login With Facebook
-        </mat-chip>
+<!--        <mat-chip color="primary" selected="true" (click)="login('FB')">-->
+<!--          Login With Facebook-->
+<!--        </mat-chip>-->
         <mat-chip color="warn" selected="true" (click)="login('GOOGLE')">
           Login With Google
         </mat-chip>
