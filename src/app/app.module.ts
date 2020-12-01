@@ -28,6 +28,10 @@ import { CartsComponent } from './user/carts/carts.component';
 import { UserComponent } from './user/user/user.component';
 import { ProductComponent } from './user/product/product.component';
 import { LoginComponent } from './user/login/login.component';
+import {AngularFireModule} from '@angular/fire';
+import {environment} from '../environments/environment';
+import {AngularFirestoreModule} from '@angular/fire/firestore';
+import {AngularFireAuth, AngularFireAuthModule} from '@angular/fire/auth';
 
 @NgModule({
   declarations: [
@@ -61,7 +65,11 @@ import { LoginComponent } from './user/login/login.component';
     MatListModule,
     MatIconModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AngularFireModule.initializeApp(environment.firebase, 'ecommerce-onlineshop'),
+    AngularFirestoreModule,
+    AngularFireAuthModule,
+    AngularFirestoreModule
   ],
   providers: [],
   bootstrap: [AppComponent]

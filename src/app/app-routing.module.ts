@@ -8,7 +8,7 @@ import {ProductComponent} from './user/product/product.component';
 import {LoginComponent} from './user/login/login.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/about', pathMatch: 'full' },
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'about', component: AboutComponent },
   { path: 'settings', component: SettingsComponent },
   { path: 'admin', component: AdmintabComponent },
