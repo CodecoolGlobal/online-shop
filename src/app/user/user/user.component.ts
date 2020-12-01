@@ -12,4 +12,12 @@ export class UserComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  onSubmit(): void{
+  }
+
+  logout(): void{
+  }
+  getUser(): void{
+  }
+
 }

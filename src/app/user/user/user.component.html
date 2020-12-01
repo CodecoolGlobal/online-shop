@@ -1,32 +1,36 @@
 <app-main-nav pageTitle="Sign Up" iconTitle="fiber_new"></app-main-nav>
-<mat-card [@fallIn]='state' *ngIf="!savedChanges else showSavedChangesCard">
-  <form #formData='ngForm' (ngSubmit)="onSubmit(formData)">
+<mat-card *ngIf="!savedChanges else showSavedChangesCard">
+  <form #formData='ngForm'>
     <mat-card-content>
       <mat-card-title>
-        <span class="small-headline">Create Account</span>
-        <span class="small-spacer"></span>
-        <a [routerLink]="['/login']" color="primary">
-          <mat-icon>backspace</mat-icon>
-        </a>
+        <span class="small-headline">Update settings</span>
       </mat-card-title>
-      <mat-card-actions align="start" [@fallIn]='state' *ngIf="error">
-        <mat-error>User ID is already taken.</mat-error>
-      </mat-card-actions>
-      <div *ngIf="dataLoading">
-        <mat-progress-spinner mode="indeterminate" [attr.color]="primary" [value]="15"></mat-progress-spinner>
-      </div>
-      <div *ngIf="brokenNetwork" class="label-error">Network connection error.</div>
+      <mat-progress-bar mode="indeterminate" *ngIf="dataLoading"></mat-progress-bar>
+      <mat-error>Your Authentification is invalid, please logout and log in again. Error {{errorMessage}}</mat-error>
       <mat-card-actions align="start">
-        <button type="submit" [disabled]="!formData.valid" mat-raised-button color="primary">Log in</button>
+        <button type="button" (click)="onSubmit(formData.value);" [disabled]="!formData.valid" mat-raised-button color="primary">Update</button>
+        <button type="button" (click)="logout()" mat-raised-button color="primary">Logout</button>
       </mat-card-actions>
-      <mat-form-field class="example-full-width">
-        <input matInput placeholder="email" name="email" #email="ngModel" ngModel required email>
+      <mat-form-field class="example-form">
+        <input matInput placeholder="name" name="name" #name="ngModel" [ngModel]="this.data?.name" ngModel required minlength="5" maxlength="30">
       </mat-form-field>
-      <mat-error *ngIf="email.invalid && (email.dirty || email.touched)">Please enter a valid email.</mat-error>
-      <mat-form-field class="example-full-width">
-        <input matInput type="password" placeholder="Choose app password" name="password" #password="ngModel" ngModel required minlength="5"
-               maxlength="30">
+      <span *ngIf="name.invalid && (name.dirty || name.touched)">
+        <mat-error *ngIf="name.errors['required']">Name is Required</mat-error>
+        <mat-error *ngIf="name.errors['minLength']">Name can't be less than 5 characters</mat-error>
+        <mat-error *ngIf="name.errors['maxLength']">Name can't be more than 30 characters</mat-error>
+      </span>
+      <br />
+      <mat-form-field class="example-form">
+        <input matInput placeholder="email" name="email" #name="ngModel" [ngModel]="this.data?.email" required email>
       </mat-form-field>
+      <br />
+
+      <mat-error *ngIf="email.invalid && (email.dirty || email.touched)">Please enter a valid email</mat-error>
+      <mat-form-field class="example-form">
+      <input matInput type="password" placeholder="Choose app password" name="password" #password="ngModel" ngModel required minlength="5"
+             maxlength="30">
+      </mat-form-field>
+
       <span *ngIf="password.invalid && (password.dirty || password.touched)">
         <mat-error *ngIf="password.errors['required']">Password is Required.</mat-error>
         <mat-error *ngIf="password.errors['minlength']">Password can't be less than 5 characters.</mat-error>
@@ -41,7 +45,7 @@
   <br>
   <br>
   <mat-error>
-    A New userId is created. Plese login back with your emailid and password.
+    Your data is updated. Plese log in back with your email and password.
   </mat-error>
   <br>
   <br>
