@@ -1,0 +1,39 @@
+<div class="container">
+  <form *ngIf="!registered" (ngSubmit)="onSubmit()" #registerForm="ngForm">
+    <h2>Register User</h2>
+    <label>* Name</label>
+    <div class="input-group">
+      <div class="input-group-prepend">
+        <span class="input-group-text">First and last name</span>
+      </div>
+      <input class="form-control" type="text" name="firstName" placeholder="First Name" [(ngModel)]="newUser.firstName"
+             ngControl="firstName" required>
+
+      <input class="form-control" type="text" name="lastName" placeholder="Last Name" [(ngModel)]="newUser.lastName" ngControl="lastName"
+             required>
+    </div>
+
+    <hr>
+
+    <label>* Username/Pasword</label>
+    <div class="input-group">
+    <div class="input-group-prepend">
+      <span class="input-group-text">Username and Password</span>
+    </div>
+    <input class="form-control" type="text" name="userName" placeholder="User Name" [(ngModel)]="newUser.userName" ngControl="userName"
+           required>
+    <input class="form-control" type="password" name="password" placeholder="Password" [(ngModel)]="newUser.password"
+           ngControl="password1">
+
+    <input class="form-control" type="password" name="password" placeholder="Repeat Password" ngControl="password2" required>
+    </div>
+
+    <hr>
+
+    <button type="submit" class="btn btn-primary" [disabled]="!registerForm.form.valid">Register</button>
+  </form>
+
+  <div *ngIf="registered">
+    <h1>Register Success!</h1>
+  </div>
+</div>

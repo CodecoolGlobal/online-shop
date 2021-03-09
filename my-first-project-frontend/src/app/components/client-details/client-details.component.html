@@ -1,0 +1,4 @@
+<div *ngIf="client$ | async as client">
+    <h1>COMPANY: {{client.companyName}}</h1>
+  <h2>NAME: {{client.firstName}} {{client.lastName}}</h2>
+</div>

@@ -1,0 +1,27 @@
+<form [formGroup]="form" (ngSubmit)="save()">
+  <div class="form-row name-field">
+    <div class="form-group col-md-6">
+      <label>
+        First Name:
+        <input class="form-control" type="text" formControlName="firstName">
+      </label>
+    </div>
+  </div>
+  <div class="form-row name-field">
+    <div class="form-group col-md-6">
+      <label>
+        Last Name:
+        <input class="form-control" type="text" formControlName="lastName">
+      </label>
+    </div>
+  </div>
+  <div class="form-row name-field">
+    <div class="form-group col-md-6">
+      <label>
+        Company:
+        <input class="form-control" type="text" formControlName="companyName">
+      </label>
+    </div>
+  </div>
+  <button class="add-btn btn btn-primary" type="submit" [disabled]="!form.valid">ADD</button>
+</form>

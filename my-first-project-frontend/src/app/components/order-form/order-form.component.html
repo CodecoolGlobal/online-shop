@@ -1,0 +1,22 @@
+<form [formGroup]="form" (ngSubmit)="save()">
+    <div class="form-row name-field">
+        <div class="form-group col-md-6">
+            <label>
+                Name of order:
+                <input class="form-control" type="text" formControlName="name">
+            </label>
+        </div>
+    </div>
+    <div class="form-row name-field">
+        <div class="form-group col-md-6">
+            <label>
+                Client:
+                <select class="form-control" formControlName="client">
+                    <option value="" disabled>Choose client</option>
+                    <option *ngFor="let client of clients$ | async" [ngValue]="client">{{client.companyName}}</option>
+                </select>
+            </label>
+        </div>
+    </div>
+    <button class="add-btn btn btn-primary" type="submit" [disabled]="!form.valid">ADD</button>
+</form>
